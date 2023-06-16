@@ -4,13 +4,13 @@ void main() {
   runApp(const MyApp());
 }
 
-// widget responsável por todas as configurações do aplicativo
+// widget responsável por todas as configurações do aplicativo. StatelessWidget é um widget sem estado, uma vez criado permanece da mesma forma até a morte dele
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
@@ -18,16 +18,33 @@ class MyApp extends StatelessWidget {
 }
 
 // widget responsável pela página do aplicativo, a principal, no caso.
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
 
   void decrement() {
-    print("Decrement");
+    setState(() {
+      count--;
+    });
+    print(count);
   }
 
   void increment() {
-    print("Increment");
+    setState(() {
+      count++;
+    });
+    print(count);
   }
+
+  bool get isEmpty => count == 0;
+  bool get isFull => count == 50;
 
   @override
   Widget build(BuildContext context) {
@@ -38,39 +55,42 @@ class HomePage extends StatelessWidget {
           image: DecorationImage(
             image: AssetImage('assets/images/cafeteria.jpg'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.srgbToLinearGamma(),
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Pode entrar!",
-              style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700),
+             Text(
+              isFull ? "Lotado" : "Pode entrar!",
+              style:  TextStyle(
+                  fontSize: 50,
+                  color: isFull ? Colors.red : Colors.white,
+                  fontWeight: FontWeight.w700,
+                  
+                  ),
             ),
-            const Text(
-              "0",
-              style: TextStyle(
-                fontSize: 100,
-                color: Colors.white,
+            Text(
+              count.toString(),
+              style:   TextStyle(
+                fontSize: 120,
+                color: isFull ? Colors.red : Colors.white,
               ),
             ),
 
             //espaçamento entre o texto (o numero de pessoas) e os botões. Ou seja, o espaçamento vertical
-            const SizedBox(height: 54),
+            const SizedBox(height: 85),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: decrement,
+                  onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black, 
+                    backgroundColor: isEmpty ? Colors.white.withOpacity(0.2) : Colors.white,
                     //padding: const EdgeInsets.all(32)
-                    fixedSize: const Size(100, 100),
-                    primary: Colors.black,
+                    fixedSize: const Size(120, 120),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(70)),
                   ),
@@ -87,12 +107,12 @@ class HomePage extends StatelessWidget {
                 const SizedBox(width: 53),
 
                 TextButton(
-                  onPressed: increment,
+                  onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black, 
+                    backgroundColor: isFull ? Colors.white.withOpacity(0.2) :  Colors.white,
                     //padding: const EdgeInsets.all(32)
-                    fixedSize: const Size(100, 100),
-                    primary: Colors.black,
+                    fixedSize: const Size(120, 120),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(70)),
                   ),
@@ -112,3 +132,9 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+/*class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
+ 
+}*/
