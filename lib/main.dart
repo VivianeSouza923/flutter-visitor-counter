@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           image: DecorationImage(
             image: AssetImage('assets/images/cafeteria.jpg'),
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.srgbToLinearGamma(),
+            colorFilter: ColorFilter.linearToSrgbGamma(),
           ),
         ),
         child: Column(
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
               isFull ? "Lotado" : "Pode entrar!",
               style:  TextStyle(
                   fontSize: 50,
-                  color: isFull ? Colors.red : Colors.white,
+                  color: isFull ? Color.fromARGB(255, 143, 10, 1)  : Colors.black87,
                   fontWeight: FontWeight.w700,
                   
                   ),
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
               count.toString(),
               style:   TextStyle(
                 fontSize: 120,
-                color: isFull ? Colors.red : Colors.white,
+                color: isFull ? Color.fromARGB(255, 143, 10, 1) : Colors.black87,
               ),
             ),
 
@@ -87,8 +87,8 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   onPressed: isEmpty ? null : decrement,
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.black, 
-                    backgroundColor: isEmpty ? Colors.white.withOpacity(0.2) : Colors.white,
+                    foregroundColor: Colors.white, 
+                    backgroundColor: isEmpty ? Colors.black.withOpacity(0.2) : Colors.black,
                     //padding: const EdgeInsets.all(32)
                     fixedSize: const Size(120, 120),
                     shape: RoundedRectangleBorder(
@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                   child: const Text(
                     "Saiu",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),
@@ -109,8 +109,8 @@ class _HomePageState extends State<HomePage> {
                 TextButton(
                   onPressed: isFull ? null : increment,
                   style: TextButton.styleFrom(
-                    foregroundColor: Colors.black, 
-                    backgroundColor: isFull ? Colors.white.withOpacity(0.2) :  Colors.white,
+                    foregroundColor: Colors.white, 
+                    backgroundColor: isFull ? Colors.black.withOpacity(0.2) :  Colors.black,
                     //padding: const EdgeInsets.all(32)
                     fixedSize: const Size(120, 120),
                     shape: RoundedRectangleBorder(
@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                   child: const Text(
                     "Entrou",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),
