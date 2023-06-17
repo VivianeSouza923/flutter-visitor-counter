@@ -46,7 +46,7 @@ Um aplicativo destinado a controle de fluxo de pessoas em um estabelecimento. Ao
 
 ## Desenvolvedora do Projeto :girl:
 
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Viviane Souza</sub>](https://github.com/VivianeSouza923) 
-| :---: | :---: | :---: |
+[<img src="https://avatars.githubusercontent.com/u/70662490?s=400&u=c11e9caaa441a2cfc3afe8edda276b6ba3fa8eef&v=4" width=115><br><sub>Viviane Souza</sub>](https://github.com/VivianeSouza923) 
+
 [<br><sub>Linkedin: Viviane Souza</sub>](https://www.linkedin.com/in/viviane-souza-8672391b0/) 
-- 
+
